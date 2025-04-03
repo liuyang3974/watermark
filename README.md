@@ -3,14 +3,14 @@
 ```markdown
 # Watermark
 
-`Watermark` 是一个简单的 JavaScript 水印生成器，允许在网页上为指定容器添加可自定义的水印，支持动态更新文本内容、旋转、颜色、透明度等属性。
+`yang-watermark` 是一个简单的 JavaScript 水印生成器，允许在网页上为指定容器添加可自定义的水印，支持动态更新文本内容、旋转、颜色、透明度等属性。
 
 ## 安装
 
 通过 npm 安装：
 
 ```bash
-npm install watermark-js
+npm install yang-watermark
 ```
 
 ## 使用
@@ -18,7 +18,7 @@ npm install watermark-js
 ### 导入
 
 ```javascript
-import Watermark from 'watermark-js';
+import Watermark from 'yang-watermark';
 ```
 
 ### 初始化
