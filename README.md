@@ -1,133 +1,134 @@
-理解了，你需要一个更容易复制的版本。以下是简化和格式化的 README 文档，适合复制和粘贴：
+# **yang-watermark** 📌
 
-```markdown
-# Watermark
+`yang-watermark` 是一个轻量级的 JavaScript/TypeScript 水印生成工具，支持：
+- **动态更新** 水印文本内容
+- **可定制** 旋转角度、颜色、透明度、字体等
+- **自动适应** 窗口尺寸变化
+- **适用于** Vue、React、原生 JavaScript 项目
 
-`yang-watermark` 是一个简单的 JavaScript 水印生成器，允许在网页上为指定容器添加可自定义的水印，支持动态更新文本内容、旋转、颜色、透明度等属性。
-
-## 安装
-
-通过 npm 安装：
-
-```bash
+## 🚀 **安装**
+使用 `npm` 安装：
+```sh
 npm install yang-watermark
 ```
 
-## 使用
-
-### 导入
-
+## 📌 **使用方法**
+### **1️⃣ 导入**
 ```javascript
-import Watermark from 'yang-watermark';
+import { Watermark } from "yang-watermark";
 ```
 
-### 初始化
-
-要使用 `Watermark`，你只需提供一个配置对象并调用构造函数。默认情况下，水印会添加到 `document.body` 中，你也可以指定其他容器。
-
-#### 示例
-
+### **2️⃣ 创建水印**
 ```javascript
-// 创建水印实例
 const watermark = new Watermark({
-  text: "这是水印",          // 水印文本内容
-  rowGap: 30,               // 行间距（水平间距）
-  colGap: 30,               // 列间距（垂直间距）
-  rotate: 45,               // 旋转角度（单位：度）
-  color: "rgba(0, 0, 0, 0.3)", // 水印颜色
-  opacity: 0.5,             // 水印透明度（0到1之间）
-  zIndex: 9999,             // 水印的层级
-  container: document.getElementById("container"),  // 容器（默认为 body）
-  fontSize: 20,             // 字体大小
-  fontFamily: "Arial",      // 字体
+  text: "公司机密", // 水印文本
+  width: 100, // 水印宽度
+  height: 100, // 水印高度
+  rowGap: 30, // 行间距
+  colGap: 30, // 列间距
+  rotate: 30, // 旋转角度（度）
+  color: "rgba(0, 0, 0, 0.2)", // 颜色
+  opacity: 0.5, // 透明度
+  zIndex: 9999, // 层级
+  container: document.getElementById("container"), // 目标容器
+  fontSize: 16, // 字体大小
+  fontFamily: "Arial", // 字体
 });
 ```
 
-### 动态更新水印
-
-你可以使用 `updateText()` 方法动态更新水印文本内容：
-
+### **3️⃣ 动态更新水印**
 ```javascript
-watermark.updateText("新的水印文本");
+watermark.updateText("新水印内容");
 ```
 
-### 移除水印
-
-使用 `removeWatermark()` 方法可以移除水印：
-
+### **4️⃣ 移除水印**
 ```javascript
 watermark.removeWatermark();
 ```
 
-### 响应式支持
+---
 
-水印会自动适应容器的大小变化。你可以通过调整窗口或容器的大小，水印会随之更新。
+## ⚙️ **API 说明**
+### **🔹 `new Watermark(options: WatermarkOptions)`**
+创建水印实例，支持以下配置：
 
-## API
+| **参数**      | **类型**       | **默认值**   | **说明** |
+|--------------|--------------|------------|---------|
+| `text`       | `string`     | `"水印"`     | 水印文本 |
+| `width`      | `number`     | `100`       | 水印区域宽度 |
+| `height`     | `number`     | `100`       | 水印区域高度 |
+| `rowGap`     | `number`     | `30`        | 行间距 |
+| `colGap`     | `number`     | `30`        | 列间距 |
+| `rotate`     | `number`     | `45`        | 旋转角度（度）|
+| `color`      | `string`     | `"rgba(0, 0, 0, 0.3)"` | 颜色 |
+| `opacity`    | `number`     | `0.5`       | 透明度（0-1）|
+| `zIndex`     | `number`     | `9999`      | 水印的层级 |
+| `container`  | `HTMLElement` | `document.body` | 目标容器 |
+| `fontSize`   | `number`     | `20`        | 字体大小 |
+| `fontFamily` | `string`     | `"Arial"`   | 字体 |
 
-### `constructor(options: Object)`
+---
 
-创建水印实例。以下是可配置的选项：
+### **🔹 `updateText(newText: string)`**
+更新水印文本。
+```javascript
+watermark.updateText("新的水印文本");
+```
 
-- **`text`** (`string`): 水印文本，默认为 `"水印"`。
-- **`rowGap`** (`number`): 水平间距，默认为 `30`。
-- **`colGap`** (`number`): 垂直间距，默认为 `30`。
-- **`rotate`** (`number`): 水印旋转角度，默认为 `45`（单位：度）。
-- **`color`** (`string`): 水印颜色，默认为 `"rgba(0, 0, 0, 0.3)"`。
-- **`opacity`** (`number`): 水印透明度，默认为 `0.5`。
-- **`zIndex`** (`number`): 水印的层级，默认为 `9999`。
-- **`container`** (`HTMLElement`): 指定容器元素，默认为 `document.body`。
-- **`fontSize`** (`number`): 水印字体大小，默认为 `20`。
-- **`fontFamily`** (`string`): 水印字体，默认为 `"Arial"`。
-
-### `updateText(newText: string)`
-
-动态更新水印的文本内容。
-
-- **`newText`** (`string`): 新的水印文本。
-
-### `removeWatermark()`
-
+### **🔹 `removeWatermark()`**
 移除水印。
+```javascript
+watermark.removeWatermark();
+```
 
-### 响应式更新
+---
 
-水印会根据容器大小和窗口大小自动进行更新。容器尺寸变化时，水印会重新计算并适配。
+## 🖥️ **浏览器兼容性**
+✅ Chrome  
+✅ Firefox  
+✅ Safari  
+✅ Edge  
 
-## 示例
+---
 
+## 📜 **示例**
+### **HTML**
 ```html
 <div id="container" style="width: 500px; height: 300px; position: relative;">
   <!-- 水印将会添加到这个容器中 -->
 </div>
-
-<script>
-  import Watermark from 'watermark-js';
-
-  // 创建水印
-  const watermark = new Watermark({
-    text: "Demo 水印",
-    container: document.getElementById("container"),
-    rotate: 30,
-    opacity: 0.3,
-    zIndex: 1000,
-  });
-
-  // 动态更新水印内容
-  setTimeout(() => {
-    watermark.updateText("新水印内容");
-  }, 3000);
-
-  // 移除水印
-  setTimeout(() => {
-    watermark.removeWatermark();
-  }, 6000);
-</script>
 ```
 
-## 支持的浏览器
+### **JavaScript**
+```javascript
+import { Watermark } from "yang-watermark";
 
-- Chrome
-- Firefox
-- Safari
-- Edge
+// 初始化水印
+const watermark = new Watermark({
+  text: "Demo 水印",
+  container: document.getElementById("container"),
+  rotate: 30,
+  opacity: 0.3,
+  zIndex: 1000,
+});
+
+// 3 秒后更新水印
+setTimeout(() => {
+  watermark.updateText("新水印内容");
+}, 3000);
+
+// 6 秒后移除水印
+setTimeout(() => {
+  watermark.removeWatermark();
+}, 6000);
+```
+
+---
+
+## 📌 **适用场景**
+- **企业内部文档保护**
+- **防止截图泄露**
+- **在线文档水印**
+- **后台管理系统**
+
+🚀 **立即体验！** 安装并使用 `yang-watermark`，轻松为你的网页添加水印！

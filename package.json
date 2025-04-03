@@ -1,12 +1,30 @@
 {
   "name": "yang-watermark",
-  "version": "2.1.0",
+  "version": "2.1.7",
   "description": "This is a watermark generation tool for JavaScript",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.es.js",
+  "type": "module",
+  "types": "dist/index.d.ts",
+  "exports": {
+    "import": "./dist/index.es.js",
+    "default": "./dist/index.cjs.js"
   },
-  "keywords": ["watermark","JavaScript","vue"],
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "vite build"
+  },
+  "keywords": [
+    "watermark",
+    "JavaScript",
+    "vue"
+  ],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "vite": "^6.2.4"
+  }
 }
